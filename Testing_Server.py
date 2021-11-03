@@ -26,8 +26,9 @@ def get_inf():
     def get_nik_name(data, addr):
         '''Создание или перезапись ника клиента'''
         global dict_us
-        data = data.split('<>')
-        if dict_us.get(addr) is None:
+        data = data.split('<<')
+        print(dict_us.get(addr))
+        if dict_us.get(addr) == 'noname_user':
             print(f"App user {data[1]}")
         else:
             print(f'Reset user {data[1]}')
@@ -48,14 +49,13 @@ def get_inf():
                     time.strftime('%H:%M:%S', time.localtime()),
                     addr,
                     len(data),
-                    dict_us.get(addr, "noname_user"),
+                    dict_us.setdefault(addr, 'noname_user'),
                     data
                 )
             )
-            dict_us.setdefault(addr, 'no_name')
             data = data.decode()
 
-            if 'nik<>' in data:
+            if 'nik<<' in data:
                 get_nik_name(data, addr)
                 sock.sendto('User_set'.encode(), addr)
             elif data == 'exit':
@@ -91,7 +91,7 @@ def send_mes():
             (mes, addrm) = mess.pop(0)
             for addr, nik in dict_us.items():
                 if addr != addrm:
-                    data = f"\33[ {dict_us[addr]}: {mes}".encode()
+                    data = f"\33[ {dict_us[addrm]}: {mes}".encode()
                     sock.sendto(data, addr)
                     sock.sendto('exoc'.encode(), addr)
                     del_dict[addr] = time.time()
