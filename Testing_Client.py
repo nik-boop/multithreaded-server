@@ -7,7 +7,7 @@ servaddr = (NAME, PORT)
 
 nik_name = input('Write you`r nik: ')
 
-sock.sendto(f'nik<>{nik_name}'.encode(), servaddr)
+sock.sendto(f'nik<<{nik_name}'.encode(), servaddr)
 sock.recvfrom(1024)
 sock.setblocking(False)
 fex = False
@@ -17,15 +17,21 @@ def Exit():
 
 
 def send():
+    global nik_name
     while True:
         data = input()
         if data == 'com_inf':
-            print("nik<>nik_name - создатть или перезапимать ник")
-            print('exit - завершить клиентсий сеанс')
+            print("nik<<nik_name - создатть или перезапимать ник"
+                  "mynik - мой ник"
+                  "exit - завершить клиентсий сеанс")
         elif data == 'help':
             print('com_inf - cправка по командам'
                   'для отправки сообщения используйте консоль, ')
+        elif data == 'mynik':
+            print(nik_name)
         else:
+            if 'nik<<' in data:
+                nik_name = data.split('<<')[1]
             try:
                 sock.sendto(data.encode(), servaddr)
                 if data == 'exit':
