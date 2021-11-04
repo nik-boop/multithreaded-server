@@ -29,6 +29,7 @@ def send():
                   'для отправки сообщения используйте консоль, ')
         elif data == 'mynik':
             print(nik_name)
+
         else:
             if 'nik<<' in data:
                 nik_name = data.split('<<')[1]
