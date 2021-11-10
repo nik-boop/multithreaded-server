@@ -3,23 +3,23 @@
 
 ###Работа многопоточного сервера
 Консоль клиента 1
-![img.png](img.png)
+![img.png](img/img.png)
 Консоль клиента 2
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 Консоль сервера
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
 
 ###Команды консоли сервера
 * показать сообщения пользователей
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 * показать все сообщения
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 * Показ логи
-![img_5.png](img_5.png)
+![img_5.png](img/img_5.png)
 * Остоновить/возобновить прослушивание 
-![img_6.png](img_6.png)
+![img_6.png](img/img_6.png)
 * Остоновить работу сервера
-![img_7.png](img_7.png)
+![img_7.png](img/img_7.png)
 
 
 ### Контрольные вопросы на «Создание простого многопоточного сервера»
