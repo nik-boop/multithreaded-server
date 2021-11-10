@@ -52,7 +52,6 @@ def workWclient(addr):
 
         while len(dict_us[addr]['messages']) > 0:
             message = dict_us[addr]['messages'].pop(0)
-            print(message)
             print(f"{addr}: {message}")
             ls_send_mes.append(f" {addr}: {message}")
             sock.sendto(message.encode(), addr)
@@ -92,11 +91,11 @@ def get_inf():
             )
 
             t = ls_all_mes[-1]['time']
-            lock.acquire()
-            try:
-                print(f"get_mes len: {len(data)}Byte".ljust(20), f'{t}'.ljust(7))
-            finally:
-                lock.release()
+            #lock.acquire()
+            #try:
+                #print(f"get_mes len: {len(data)}Byte".ljust(20), f'{t}'.ljust(7))
+            #finally:
+                #lock.release()
 
             data = data.decode()
 
@@ -151,7 +150,7 @@ def send_mes():
                         weight_mes += len(data)
 
                         pass
-                print(f"send mes all: col_mes {k}, weight_all_mes {weight_mes}Byte")
+                #print(f"send mes all: col_mes {k}, weight_all_mes {weight_mes}Byte")
             finally:
                 lock.release()
         else:
